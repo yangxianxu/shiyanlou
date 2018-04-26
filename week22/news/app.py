@@ -14,11 +14,10 @@ class File(db.Model):
     created_time = db.Column(db.DateTime)
     content = db.Column(db.Text)
 
-    category_id = db.Column(db.Integer,db.ForeignKey('category.id')
-    #category = db.relationship('Category', backref=db.backref('files', lazy='dynamic'))
+    category_id = db.Column(db.Integer,db.ForeignKey('category.id'))
+    category = db.relationship('Category', backref=db.backref('files', lazy='dynamic'))
 
-    #def __init__(self, title, category, content):
-    def __init__(self, title, content):
+    def __init__(self, title, category, content):
         self.title = title
         created_time = datetime.utcnow()
         self.category = category
