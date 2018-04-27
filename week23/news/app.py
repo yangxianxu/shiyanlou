@@ -32,11 +32,12 @@ class File(db.Model):
 
     def add_tag(self, tag_name):
         mfile = mdb.mfile.find_one({'id':self.id})
+        print(mfile)
         if not mfile:
             mfile = {'id':self.id,'tags':self.tags.append(tag_name)}
             mdb.mfile.insert_one(mfile)
         else:
-            mfile = {'id':self.id,'tags':tags['tags'].append(tag_name)}
+            mfile = {'id':self.id,'tags':self.tags.append(tag_name)}
             mdb.mfile.update_one(file_tags)
 
     def remove_tag(self, tag_name):
@@ -50,7 +51,7 @@ class File(db.Model):
 
     @property
     def tags(self):
-        mfile = db1.mfile.find_one({'id':self.id})
+        mfile = mdb.mfile.find_one({'id':self.id})
         if not mfile:
             tags = []
             return tags
