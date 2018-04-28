@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block header %}
+<h1>file</h1>
+{% endblock %}
+{% block content %}
+<p>title:{{ article.title }}</p>
+<p>content:{{ article.content }}</p>
+<p>created_time:{{ article.created_time }}</p>
+<p>category:{{ article.category.name }}</p>
+{% endblock %}
